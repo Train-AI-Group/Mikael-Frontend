@@ -11,7 +11,7 @@ export const FaqSection = ({
   description = "Everything you need to know about the product and billing.",
 }: FaqSectionProps) => {
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-40">
       <div className="container mx-auto px-4">
         <h2 className="text-center font-inter text-5xl font-medium leading-[58px] tracking-[-0.03em] text-black mb-9">
           {title}
