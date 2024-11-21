@@ -53,8 +53,8 @@ export const ModelsIcon = () => {
         fill="currentColor"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M16.75 10.125H14.125V12.75H16.75V10.125ZM13.375 8.875C13.0989 8.875 12.875 9.09886 12.875 9.375V13.5C12.875 13.7761 13.0989 14 13.375 14H17.5C17.7761 14 18 13.7761 18 13.5V9.375C18 9.09886 17.7761 8.875 17.5 8.875H13.375Z"
         fill="currentColor"
       />
