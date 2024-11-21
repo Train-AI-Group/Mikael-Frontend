@@ -1,3 +1,4 @@
+import { DashboardHeader } from "@/components/DashboardHeader/DashboardHeader"
 import { DashboardNavigation } from "@/components/DashboardNavigation/DashboardNavigation"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -6,7 +7,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <aside className="border-r border-gray-200">
         <DashboardNavigation />
       </aside>
-      <main className="p-6">{children}</main>
+      <main className="flex flex-col p-8">
+        <DashboardHeader />
+        {children}
+      </main>
     </div>
   )
 }

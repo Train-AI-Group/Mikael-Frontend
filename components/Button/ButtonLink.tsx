@@ -1,30 +1,30 @@
-import { ButtonHTMLAttributes } from "react"
 import classNames from "classnames"
+import Link from "next/link"
+import { ButtonProps } from "@/components/Button/Button"
 
-export const baseStyles = "px-8 py-2.5 rounded-full font-medium transition-colors"
+const baseStyles = "px-8 py-2.5 rounded-full font-medium transition-colors"
 
-export const variantStyles = {
+const variantStyles = {
   primary: "bg-primary text-white hover:bg-primary/80 active:bg-primary/90",
   secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300",
   ghost: "bg-transparent text-black hover:bg-gray-100 active:bg-gray-200",
 } as const
 
-export interface ButtonProps {
-  className?: string
-  variant?: keyof typeof variantStyles
-  fullWidth?: boolean
-  children: React.ReactNode
+interface ButtonLinkProps extends ButtonProps {
+  href: string
 }
 
-export const Button = ({
+export const ButtonLink = ({
   variant = "primary",
   fullWidth = false,
+  href,
   children,
   className = "",
   ...props
-}: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) => {
+}: ButtonLinkProps) => {
   return (
-    <button
+    <Link
+      href={href}
       className={classNames(
         baseStyles,
         variantStyles[variant],
@@ -36,6 +36,6 @@ export const Button = ({
       {...props}
     >
       {children}
-    </button>
+    </Link>
   )
 }
