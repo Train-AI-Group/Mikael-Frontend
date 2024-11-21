@@ -1,9 +1,5 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/Button/Button"
-import { useState } from "react"
 import { HomepageHeaderNavigation } from "@/components/HomepageHeader/HomepageHeaderNavigation"
 import { HomepageHeaderMobileNavigation } from "@/components/HomepageHeader/HomepageHeaderMobileNavigation"
 
@@ -20,8 +16,6 @@ export const homepageNavItems: NavItem[] = [
 ]
 
 export const HomepageHeader = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
   return (
     <header className="w-full bg-white mt-11">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

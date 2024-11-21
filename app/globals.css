@@ -19,3 +19,26 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.gradient-line {
+  height: calc(100% + 100px);
+  position: absolute;
+  background: linear-gradient(180deg, #d72b00 0%, #ff5900 100%);
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 100%;
+  padding: 1px;
+  background: linear-gradient(180deg, #d72b00 0%, #ff5900 100%) border-box;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
