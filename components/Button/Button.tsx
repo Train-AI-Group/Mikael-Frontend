@@ -1,7 +1,8 @@
 import { ButtonHTMLAttributes } from "react"
 import classNames from "classnames"
 
-export const baseStyles = "px-8 py-2.5 rounded-full font-medium transition-colors"
+export const baseStyles =
+  "flex flex-row gap-2 items-center px-8 py-2.5 rounded-full font-medium transition-colors"
 
 export const variantStyles = {
   primary: "bg-primary text-white hover:bg-primary/80 active:bg-primary/90",
@@ -10,6 +11,7 @@ export const variantStyles = {
 } as const
 
 export interface ButtonProps {
+  icon?: React.ReactNode
   className?: string
   variant?: keyof typeof variantStyles
   fullWidth?: boolean
@@ -17,6 +19,7 @@ export interface ButtonProps {
 }
 
 export const Button = ({
+  icon,
   variant = "primary",
   fullWidth = false,
   children,
@@ -35,6 +38,7 @@ export const Button = ({
       )}
       {...props}
     >
+      {icon}
       {children}
     </button>
   )
