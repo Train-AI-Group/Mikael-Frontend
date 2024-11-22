@@ -6,7 +6,7 @@ import { Description, Field, Label, Switch } from "@headlessui/react"
 import EstimatedErnings from "../EstimatedErnings/EstimatedErnings"
 import { Button } from "../Button/Button"
 
-interface newDataset {
+interface NewModel {
   name: string
   visibility: string
   fieldOfStudy: string
@@ -38,8 +38,8 @@ const methodOptions = [
   { value: "dataVisualization", label: "Data Visualization" },
 ]
 
-const NewDatasetForm = () => {
-  const [newDataset, setNewDataset] = useState<newDataset>({
+const NewModelForm = () => {
+  const [newModel, setNewModel] = useState<NewModel>({
     name: "",
     visibility: "",
     fieldOfStudy: "",
@@ -48,27 +48,27 @@ const NewDatasetForm = () => {
     clean: false,
   })
   const handleSubmit = () => {
-    console.log(newDataset)
+    console.log(newModel)
   }
   return (
     <>
       <form className="space-y-6">
-        {/* DataSet Name */}
+        {/* Model Name */}
         <SimpleInput
-          label="Dataset Name"
-          placeholder="Enter dataset title"
-          value={newDataset.name}
-          onChange={(e) => setNewDataset({ ...newDataset, name: e.target.value })}
+          label="Model Name"
+          placeholder="Enter model title"
+          value={newModel.name}
+          onChange={(e) => setNewModel({ ...newModel, name: e.target.value })}
         />
         {/* Visibility */}
         <Selector
           label="Visibility"
           selected={
-            visibilityOptions.find((option) => option.value === newDataset.visibility) ||
+            visibilityOptions.find((option) => option.value === newModel.visibility) ||
             visibilityOptions[0]
           }
           onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, visibility: option.value })
+            setNewModel({ ...newModel, visibility: option.value })
           }
           options={visibilityOptions}
         />
@@ -77,11 +77,11 @@ const NewDatasetForm = () => {
         <Selector
           label="Field of Study"
           selected={
-            fieldOfStudyOptions.find((option) => option.value === newDataset.fieldOfStudy) ||
+            fieldOfStudyOptions.find((option) => option.value === newModel.fieldOfStudy) ||
             fieldOfStudyOptions[0]
           }
           onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, fieldOfStudy: option.value })
+            setNewModel({ ...newModel, fieldOfStudy: option.value })
           }
           options={fieldOfStudyOptions}
         />
@@ -90,11 +90,9 @@ const NewDatasetForm = () => {
         <Selector
           label="Domains"
           selected={
-            domainOptions.find((option) => option.value === newDataset.domains) || domainOptions[0]
+            domainOptions.find((option) => option.value === newModel.domains) || domainOptions[0]
           }
-          onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, domains: option.value })
-          }
+          onChange={(option: SelectorOption) => setNewModel({ ...newModel, domains: option.value })}
           options={domainOptions}
         />
 
@@ -102,11 +100,9 @@ const NewDatasetForm = () => {
         <Selector
           label="Methods"
           selected={
-            methodOptions.find((option) => option.value === newDataset.methods) || methodOptions[0]
+            methodOptions.find((option) => option.value === newModel.methods) || methodOptions[0]
           }
-          onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, methods: option.value })
-          }
+          onChange={(option: SelectorOption) => setNewModel({ ...newModel, methods: option.value })}
           options={methodOptions}
         />
 
@@ -122,8 +118,8 @@ const NewDatasetForm = () => {
             </Description>
           </span>
           <Switch
-            checked={newDataset.clean}
-            onChange={(checked) => setNewDataset({ ...newDataset, clean: checked })}
+            checked={newModel.clean}
+            onChange={(checked) => setNewModel({ ...newModel, clean: checked })}
             className="group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 data-[checked]:bg-primary"
           >
             <span
@@ -167,4 +163,4 @@ const NewDatasetForm = () => {
   )
 }
 
-export default NewDatasetForm
+export default NewModelForm

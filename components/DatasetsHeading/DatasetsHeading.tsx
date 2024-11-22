@@ -1,10 +1,10 @@
 "use client"
 
 import { Button } from "@/components/Button/Button"
-import NewDataSetForm from "../NewDataSetForm/NewDataSetForm"
 import { AddIcon } from "@/components/icons/AddIcon/AddIcon"
 import { useState } from "react"
 import Drawer from "../Drawer/Drawer"
+import NewDatasetForm from "../NewDatasetForm/NewDatasetForm"
 
 interface DatasetsHeadingProps {
   title: string
@@ -27,7 +27,7 @@ export const DatasetsHeading = ({ title, description }: DatasetsHeadingProps) =>
         </Button>
       </div>
       <Drawer open={isPanelOpen} setOpen={() => setIsPanelOpen(false)} title="Upload Dataset">
-        <NewDataSetForm />
+        <NewDatasetForm />
       </Drawer>
     </>
   )
