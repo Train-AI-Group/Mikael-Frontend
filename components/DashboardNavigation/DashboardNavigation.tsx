@@ -30,42 +30,26 @@ export const DashboardNavigation = () => {
         <nav aria-label="Dashboard sections" className="flex-1">
           <ul role="list" className="space-y-1">
             <li>
-              <DashboardNavigationLink icon={<HomeIcon />} label="Home" href="/dashboard" />
+              <DashboardNavigationLink icon={<HomeIcon />} label="Home" href="/" />
             </li>
             <li>
-              <DashboardNavigationLink
-                icon={<ModelsIcon />}
-                label="Models"
-                href="/dashboard/models"
-              />
+              <DashboardNavigationLink icon={<ModelsIcon />} label="Models" href="/models" />
             </li>
             <li>
-              <DashboardNavigationLink
-                icon={<DatasetsIcon />}
-                label="Datasets"
-                href="/dashboard/datasets"
-              />
+              <DashboardNavigationLink icon={<DatasetsIcon />} label="Datasets" href="/datasets" />
             </li>
             <li>
-              <DashboardNavigationLink
-                icon={<StarIcon />}
-                label="Rankings"
-                href="/dashboard/rankings"
-              />
+              <DashboardNavigationLink icon={<StarIcon />} label="Rankings" href="/rankings" />
             </li>
           </ul>
         </nav>
         <nav aria-label="User settings" className="mb-2">
           <ul role="list">
             <li>
-              <DashboardNavigationLink
-                icon={<SettingsIcon />}
-                label="Settings"
-                href="/dashboard/settings"
-              />
+              <DashboardNavigationLink icon={<SettingsIcon />} label="Settings" href="/settings" />
             </li>
             <li>
-              <DashboardNavigationLink icon={<HelpIcon />} label="Help" href="/dashboard/help" />
+              <DashboardNavigationLink icon={<HelpIcon />} label="Help" href="/help" />
             </li>
           </ul>
         </nav>
