@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss"
 import defaultTheme from "tailwindcss/defaultTheme"
+import forms from "@tailwindcss/forms";
 
 const config: Config = {
   content: [
@@ -17,6 +18,7 @@ const config: Config = {
       },
       colors: {
         primary: "#D72B00",
+        secondary: "#6E6E6E",
         orange: "#FF5900",
         icon: "#5D5D5D",
       },
@@ -34,7 +36,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [forms],
 }
 
 export default config
