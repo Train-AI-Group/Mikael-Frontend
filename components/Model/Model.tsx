@@ -9,6 +9,9 @@ interface ModelProps {
   authorName: string
   description: string
   authorProfileUrl: string
+  modelName: string
+  variationNumber: number
+  notebookNumber: number
   likesCount: number
 }
 
@@ -17,6 +20,9 @@ export const Model = ({
   authorName,
   description,
   authorProfileUrl,
+  modelName,
+  variationNumber,
+  notebookNumber,
   likesCount,
 }: ModelProps) => {
   const slug = slugify(title)
@@ -29,11 +35,24 @@ export const Model = ({
         </Link>
 
         <div className="pt-[18px]">
-          <Link href={`/datasets/${slug}`} className="text-black hover:text-primary">
+          <Link
+            href={`/datasets/${slug}`}
+            className="inline-block text-black hover:text-primary mb-2"
+          >
             <h3 className="font-inter text-xl font-medium">{title}</h3>
           </Link>
-          <div className="flex flex-row items-center gap-4 mb-6">
+          <div className="flex flex-row items-center gap-4 mb-4">
             <p className="font-inter text-sm text-[#6e6e6e]">{description}</p>
+          </div>
+          <div className="flex flex-row items-center gap-2 font-inter font-medium text-sm text-[#6e6e6e]">
+            <p>{authorName}</p>
+            <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
+            <p>{modelName}</p>
+            <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
+            <p>{variationNumber}</p>
+            <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
+            <p>{notebookNumber}</p>
+            <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
           </div>
         </div>
       </div>

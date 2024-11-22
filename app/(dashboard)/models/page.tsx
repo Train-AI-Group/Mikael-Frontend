@@ -11,10 +11,53 @@ export default function ModelsPage() {
       />
       <SearchModels />
       <Model
-        title="Model 1"
-        authorName="Author Name"
-        description="Description"
+        title="mobilenet_v2"
+        authorName="Google"
+        description="SSD-based object detection model trained on Open Images V4 with ImageNet pre-trained MobileNet V2 as image feature extractor."
         authorProfileUrl="/img/medium-avatar.png"
+        modelName="MobileNet V2"
+        variationNumber={1}
+        notebookNumber={1}
+        likesCount={100}
+      />
+      <Model
+        title="mobilenet_v2"
+        authorName="Google"
+        description="SSD-based object detection model trained on Open Images V4 with ImageNet pre-trained MobileNet V2 as image feature extractor."
+        authorProfileUrl="/img/medium-avatar.png"
+        modelName="MobileNet V2"
+        variationNumber={1}
+        notebookNumber={1}
+        likesCount={100}
+      />
+      <Model
+        title="mobilenet_v2"
+        authorName="Google"
+        description="SSD-based object detection model trained on Open Images V4 with ImageNet pre-trained MobileNet V2 as image feature extractor."
+        authorProfileUrl="/img/medium-avatar.png"
+        modelName="MobileNet V2"
+        variationNumber={1}
+        notebookNumber={1}
+        likesCount={100}
+      />
+      <Model
+        title="mobilenet_v2"
+        authorName="Google"
+        description="SSD-based object detection model trained on Open Images V4 with ImageNet pre-trained MobileNet V2 as image feature extractor."
+        authorProfileUrl="/img/medium-avatar.png"
+        modelName="MobileNet V2"
+        variationNumber={1}
+        notebookNumber={1}
+        likesCount={100}
+      />
+      <Model
+        title="mobilenet_v2"
+        authorName="Google"
+        description="SSD-based object detection model trained on Open Images V4 with ImageNet pre-trained MobileNet V2 as image feature extractor."
+        authorProfileUrl="/img/medium-avatar.png"
+        modelName="MobileNet V2"
+        variationNumber={1}
+        notebookNumber={1}
         likesCount={100}
       />
     </>
