@@ -7,7 +7,7 @@ import { useState } from "react"
 const roles = {
   contributors: [
     {
-      image: "/icons/upload.svg",
+      image: "/icons/download.svg",
       title: "Upload Data",
       description: "Contribute labeled data, such as text and images to train the model.",
     },
