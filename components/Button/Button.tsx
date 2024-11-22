@@ -8,6 +8,9 @@ export const variantStyles = {
   primary: "bg-primary text-white hover:bg-primary/80 active:bg-primary/90",
   secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300",
   ghost: "bg-transparent text-black hover:bg-gray-100 active:bg-gray-200",
+  outlined:
+    "bg-transparent text-primary border border-primary hover:bg-primary/10 active:bg-primary/20",
+  black: "bg-black text-white hover:bg-black/80 active:bg-black/90",
 } as const
 
 export interface ButtonProps {
