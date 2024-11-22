@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss"
 import defaultTheme from "tailwindcss/defaultTheme"
-import forms from "@tailwindcss/forms";
+import forms from "@tailwindcss/forms"
 
 const config: Config = {
   content: [
@@ -11,6 +11,7 @@ const config: Config = {
   ],
   theme: {
     ...defaultTheme,
+    darkMode: "false",
     extend: {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],

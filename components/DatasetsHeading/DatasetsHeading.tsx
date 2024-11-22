@@ -4,7 +4,7 @@ import { Button } from "@/components/Button/Button"
 import { AddIcon } from "@/components/icons/AddIcon/AddIcon"
 import { useState } from "react"
 import Drawer from "../Drawer/Drawer"
-import NewDatasetForm from "../NewDatasetForm/NewDataSetForm"
+import NewDatasetForm from "../NewDatasetForm/NewDatasetForm"
 
 interface DatasetsHeadingProps {
   title: string
