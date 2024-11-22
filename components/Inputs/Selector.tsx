@@ -1,9 +1,11 @@
+"use client"
+
 import { joinClasses } from "@/utils/joinClasses"
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react"
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid"
 
 interface SelectorProps {
-  label: string
+  label?: string
   options: SelectorOption[]
   selected: SelectorOption
   onChange: (value: SelectorOption) => void
@@ -15,10 +17,10 @@ export interface SelectorOption {
   icon?: React.ReactNode
 }
 
-export default function Selector({ label, options, selected, onChange }: SelectorProps) {
+export const Selector = ({ label, options, selected, onChange }: SelectorProps) => {
   return (
     <Listbox value={selected} onChange={onChange}>
-      <Label className="block text-sm/6 font-medium text-secondary">{label}</Label>
+      {label && <Label className="block text-sm/6 font-medium text-secondary">{label}</Label>}
       <div className="relative mt-2">
         <ListboxButton className="relative w-full cursor-default rounded-full bg-white py-3.5 pl-6 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm/6">
           <span className="flex items-center">

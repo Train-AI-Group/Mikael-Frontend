@@ -1,18 +1,18 @@
 "use client"
+
 import { Button } from "@/components/Button/Button"
-import Image from "next/image"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useCallback, useEffect } from "react"
 import NewDataSetForm from "../NewDataSetForm/NewDataSetForm"
 
 import { AddIcon } from "@/components/icons/AddIcon/AddIcon"
 
-interface DashboardHeadingProps {
+interface DatasetsHeadingProps {
   title: string
   description: string
 }
 
-export const DashboardHeading = ({ title, description }: DashboardHeadingProps) => {
+export const DatasetsHeading = ({ title, description }: DatasetsHeadingProps) => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const pathname = usePathname()

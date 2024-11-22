@@ -1,6 +1,10 @@
 import Image from "next/image"
 
-export const SearchInput = () => {
+interface SearchInputProps {
+  placeholder: string
+}
+
+export const SearchInput = ({ placeholder }: SearchInputProps) => {
   return (
     <label
       htmlFor="search"
@@ -10,8 +14,8 @@ export const SearchInput = () => {
       <input
         type="text"
         id="search"
-        className="border-none outline-none pt-1 ml-2 placeholder:font-inter placeholder:font-medium placeholder:text-xl placeholder:leading-6 placeholder:tracking-[-0.03em] placeholder:text-[#6E6E6E]"
-        placeholder="Search"
+        className="border-none outline-none focus:ring-0 top-2 ml-2 placeholder:font-inter placeholder:font-medium placeholder:text-xl placeholder:leading-6 placeholder:tracking-[-0.03em] placeholder:text-[#6E6E6E]"
+        placeholder={placeholder}
       />
     </label>
   )

@@ -4,7 +4,7 @@ import { SearchInput } from "@/components/SearchInput/SearchInput"
 export const DashboardHeader = () => {
   return (
     <div className="flex flex-row justify-between items-center mb-16 px-8">
-      <SearchInput />
+      <SearchInput placeholder="Search" />
       <ButtonLink href="/sign-in" variant="ghost">
         Sign in
       </ButtonLink>
