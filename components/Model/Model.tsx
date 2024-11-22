@@ -30,13 +30,13 @@ export const Model = ({
   return (
     <div className="flex flex-row items-start space-between py-8 border-b border-[#C4C4C4] mx-8">
       <div className="flex flex-row flex-1 gap-6">
-        <Link href={`/datasets/${slug}`} className="mt-5">
+        <Link href={`/models/${slug}`} className="mt-5">
           <Avatar src={authorProfileUrl} alt={authorName} />
         </Link>
 
         <div className="pt-[18px]">
           <Link
-            href={`/datasets/${slug}`}
+            href={`/models/${slug}`}
             className="inline-block text-black hover:text-primary mb-2"
           >
             <h3 className="font-inter text-xl font-medium">{title}</h3>
