@@ -21,7 +21,7 @@ const SimpleInput = ({ label, placeholder, value, onChange }: SimpleInputProps) 
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="block w-full rounded-full border-0 px-4 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-primary sm:text-sm/6"
+          className="block w-full rounded-full border-0 px-6 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-primary sm:text-sm/6"
         />
       </div>
     </div>

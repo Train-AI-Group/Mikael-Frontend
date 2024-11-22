@@ -95,7 +95,6 @@ export const DashboardHeading = ({ title, description }: DashboardHeadingProps) 
 
         {/* Panel Content */}
         <div className="p-6 ">
-          {/* We can split the form into a separate server component */}
           <NewDataSetForm />
         </div>
       </div>
