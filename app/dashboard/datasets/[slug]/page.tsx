@@ -1,4 +1,4 @@
-import { ModelDetails } from "@/components/ModelDetails/ModelDetails"
+import { DatasetDetails } from "@/components/DatasetDetails/DatasetDetails"
 import { EntrySubHeading } from "@/components/EntrySubHeading/EntrySubHeading"
 import { FileDetails } from "@/components/FileDetails/FileDetails"
 
@@ -30,7 +30,7 @@ export default function DatasetDataCardPage() {
             </p>
           </FileDetails>
         </div>
-        <ModelDetails />
+        <DatasetDetails />
       </div>
     </div>
   )

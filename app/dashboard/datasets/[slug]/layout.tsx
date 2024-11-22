@@ -1,10 +1,10 @@
 import { Button } from "@/components/Button/Button"
 import { EntryAuthor } from "@/components/EntryAuthor/EntryAuthor"
 import { EntryHeading } from "@/components/EntryHeading/EntryHeading"
-import { ModelNavigation } from "@/components/ModelNavigation/ModelNavigation"
+import { DatasetNavigation } from "@/components/DatasetNavigation/DatasetNavigation"
 import { AddIcon } from "@/components/icons/AddIcon/AddIcon"
 
-export default function ModelLayout({ children }: { children: React.ReactNode }) {
+export default function DatasetLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="px-8">
@@ -29,7 +29,7 @@ export default function ModelLayout({ children }: { children: React.ReactNode })
           imageSrc="/img/dataset-image.png"
         />
       </div>
-      <ModelNavigation />
+      <DatasetNavigation />
       {children}
     </>
   )

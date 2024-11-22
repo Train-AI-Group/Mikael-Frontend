@@ -1,6 +1,6 @@
 import { TagPill } from "@/components/TagPill/TagPill"
 
-export const ModelDetails = () => {
+export const DatasetDetails = () => {
   return (
     <div className="flex flex-col gap-7 w-52 flex-shrink-0">
       <div className="flex flex-col gap-2">

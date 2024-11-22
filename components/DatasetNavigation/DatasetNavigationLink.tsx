@@ -5,15 +5,15 @@ import { ReactNode } from "react"
 import { useParams, usePathname } from "next/navigation"
 import classNames from "classnames"
 
-interface ModelNavigationLinkProps {
+interface DatasetNavigationLinkProps {
   children: ReactNode
   href: string
 }
 
-export const ModelNavigationLink = ({ children, href }: ModelNavigationLinkProps) => {
+export const DatasetNavigationLink = ({ children, href }: DatasetNavigationLinkProps) => {
   const pathname = usePathname()
   const params = useParams()
-  const fullHref = `/dashboard/models/${params.slug}${href}`
+  const fullHref = `/dashboard/datasets/${params.slug}${href}`
   const isActive = pathname === fullHref
 
   return (
