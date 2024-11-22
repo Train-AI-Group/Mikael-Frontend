@@ -49,9 +49,13 @@ export const Model = ({
             <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
             <p>{modelName}</p>
             <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
-            <p>{variationNumber}</p>
+            <p>
+              {variationNumber} {variationNumber === 1 ? "Variation" : "Variations"}
+            </p>
             <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
-            <p>{notebookNumber}</p>
+            <p>
+              {notebookNumber} {notebookNumber === 1 ? "Notebook" : "Notebooks"}
+            </p>
             <div className="size-0.5 rounded-full bg-[#6e6e6e]" />
           </div>
         </div>
