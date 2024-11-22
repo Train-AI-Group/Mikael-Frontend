@@ -13,7 +13,7 @@ interface DatasetNavigationLinkProps {
 export const DatasetNavigationLink = ({ children, href }: DatasetNavigationLinkProps) => {
   const pathname = usePathname()
   const params = useParams()
-  const fullHref = `/dashboard/datasets/${params.slug}${href}`
+  const fullHref = `/datasets/${params.slug}${href}`
   const isActive = pathname === fullHref
 
   return (

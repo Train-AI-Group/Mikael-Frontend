@@ -12,7 +12,7 @@ interface DashboardNavigationLinkProps {
 
 export const DashboardNavigationLink = ({ icon, label, href }: DashboardNavigationLinkProps) => {
   const pathname = usePathname()
-  const isActive = pathname === href
+  const isActive = pathname.startsWith(href) && (href === "/" ? pathname === "/" : true)
 
   return (
     <Link

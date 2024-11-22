@@ -2,6 +2,7 @@ import { EllipsisIcon } from "@/components/icons/EllipsisIcon/EllipsisIcon"
 import { HeartIcon } from "@/components/icons/HeartIcon/HeartIcon"
 import classNames from "classnames"
 import Link from "next/link"
+import { slugify } from "@/utils/slugify"
 
 interface DatasetProps {
   title: string
@@ -24,21 +25,27 @@ export const Dataset = ({
   authorProfileUrl,
   likesCount,
 }: DatasetProps) => {
+  const slug = slugify(title)
+
   return (
     <div className="flex flex-row items-start space-between py-8 border-b border-[#C4C4C4] mx-8">
       <div className="flex flex-row flex-1 gap-6">
-        <div className="h-[130px] w-[130px] flex-shrink-0 bg-gray-200 rounded-lg">
-          {/* <Image
+        <Link href={`/datasets/${slug}`}>
+          <div className="h-[130px] w-[130px] flex-shrink-0 bg-gray-200 rounded-lg">
+            {/* <Image
           src="https://placehold.co/130x130"
           alt={`${title} thumbnail`}
           width={130}
           height={130}
           className="rounded-lg"
-        /> */}
-        </div>
+            /> */}
+          </div>
+        </Link>
 
         <div className="pt-[18px]">
-          <h3 className="font-inter text-xl font-medium text-black">{title}</h3>
+          <Link href={`/datasets/${slug}`} className="text-black hover:text-primary">
+            <h3 className="font-inter text-xl font-medium">{title}</h3>
+          </Link>
           <div className="flex flex-row items-center gap-4 mb-6">
             <Link
               href={authorProfileUrl}
