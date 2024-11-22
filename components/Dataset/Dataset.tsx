@@ -25,7 +25,7 @@ export const Dataset = ({
   likesCount,
 }: DatasetProps) => {
   return (
-    <div className="flex flex-row items-start space-between py-8 border-b border-[#C4C4C4]">
+    <div className="flex flex-row items-start space-between py-8 border-b border-[#C4C4C4] mx-8">
       <div className="flex flex-row flex-1 gap-6">
         <div className="h-[130px] w-[130px] flex-shrink-0 bg-gray-200 rounded-lg">
           {/* <Image

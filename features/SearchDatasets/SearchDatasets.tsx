@@ -1,14 +1,14 @@
 import { SearchInput } from "@/components/SearchInput/SearchInput"
-import { FilterPill } from "@/components/FilterPill/FilterPill"
+import { TagPill } from "@/components/TagPill/TagPill"
 
 export const SearchDatasets = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 px-8">
       <SearchInput />
       <div className="flex flex-wrap gap-2">
-        <FilterPill>Filter 1</FilterPill>
-        <FilterPill>Filter 2</FilterPill>
-        <FilterPill>Filter 3</FilterPill>
+        <TagPill>Filter 1</TagPill>
+        <TagPill>Filter 2</TagPill>
+        <TagPill>Filter 3</TagPill>
       </div>
     </div>
   )
