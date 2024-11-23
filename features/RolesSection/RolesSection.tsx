@@ -48,12 +48,10 @@ export const RolesSection = () => {
   }
 
   return (
-    <div className="container mx-auto py-10">
-      <div className="flex flex-row gap-10">
-        <div className="flex flex-1 flex-col gap-10" style={{ marginTop: "80px" }}>
-          <h2 className="font-medium text-black" style={{ fontSize: "48px" }}>
-            Choose a role
-          </h2>
+    <div className="container mx-auto ">
+      <div className="flex sm:flex-row sm:space-x-28 items-center">
+        <div className="flex flex-1 flex-col gap-10">
+          <h2 className="font-medium text-black text-3xl">Choose a role</h2>
 
           <div role="listbox" aria-label="Roles" className="flex flex-col gap-4">
             <RoleCard
@@ -73,6 +71,9 @@ export const RolesSection = () => {
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-10 relative" style={{ marginTop: "80px" }}>
+          <div className="absolute h-full w-[1px] -top-24 left-10 -z-50">
+            <VerticleLine />
+          </div>
           {roles[selectedRole].map((role, index) => (
             <StepDetail
               key={index}
@@ -85,5 +86,26 @@ export const RolesSection = () => {
         </div>
       </div>
     </div>
+  )
+}
+
+const VerticleLine = () => {
+  return (
+    <svg width="2" height="637" viewBox="0 0 2 637" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 0L1.00003 637" stroke="url(#paint0_linear_62_1942)" />
+      <defs>
+        <linearGradient
+          id="paint0_linear_62_1942"
+          x1="1.5"
+          y1="-2.18557e-08"
+          x2="1.50003"
+          y2="637"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#FFDDD5" />
+          <stop offset="1" stop-color="#D72B00" />
+        </linearGradient>
+      </defs>
+    </svg>
   )
 }
