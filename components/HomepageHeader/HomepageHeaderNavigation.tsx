@@ -4,10 +4,12 @@ import { homepageNavItems } from "@/components/HomepageHeader/HomepageHeader"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 
-const SignUpButton = dynamic(() => import("@/features/SignUpButton/SignUpButton").then(mod => mod.SignUpButton), {
-  ssr: false
-})
-
+const SignUpButton = dynamic(
+  () => import("@/features/SignUpButton/SignUpButton").then((mod) => mod.SignUpButton),
+  {
+    ssr: false,
+  }
+)
 
 export const HomepageHeaderNavigation = () => {
   return (
