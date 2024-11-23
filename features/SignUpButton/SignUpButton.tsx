@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useState } from "react"
 import { useConnection, useActiveAddress } from "arweave-wallet-kit"
@@ -57,5 +57,3 @@ export const SignUpButton = () => {
     return <Button onClick={handleConnect}>Connect Wallet</Button>
   }
 }
-
-};
