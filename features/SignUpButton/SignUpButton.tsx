@@ -27,14 +27,12 @@ export const SignUpButton = () => {
     disconnect()
   }
 
-  console.log({ connected, activeAddress })
-
   if (connected && activeAddress) {
     return (
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <span className="text-white cursor-pointer border rounded-2xl px-2 py-1 hover:bg-gray-600">
+            <span className="text-black text-md cursor-pointer border rounded-full px-6 py-2 hover:text-white hover:bg-primary h-[44px]">
               {activeAddress.slice(0, 6)}...{activeAddress.slice(-4)}
             </span>
           </TooltipTrigger>
@@ -49,7 +47,7 @@ export const SignUpButton = () => {
     )
   } else if (connecting) {
     return (
-      <Button disabled>
+      <Button disabled className="py-5">
         <BarLoader color="#fff" />
       </Button>
     )
