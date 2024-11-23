@@ -1,6 +1,13 @@
-import { Button } from "@/components/Button/Button"
+"use client"
+
 import { homepageNavItems } from "@/components/HomepageHeader/HomepageHeader"
+import dynamic from "next/dynamic"
 import Link from "next/link"
+
+const SignUpButton = dynamic(() => import("@/features/SignUpButton/SignUpButton").then(mod => mod.SignUpButton), {
+  ssr: false
+})
+
 
 export const HomepageHeaderNavigation = () => {
   return (
@@ -14,7 +21,7 @@ export const HomepageHeaderNavigation = () => {
           {item.label}
         </Link>
       ))}
-      <Button>Sign Up</Button>
+      <SignUpButton />
     </nav>
   )
 }
