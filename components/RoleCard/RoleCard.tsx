@@ -16,7 +16,7 @@ export const RoleCard = ({ title, description, buttonText, selected, onClick }: 
       aria-selected={selected}
       aria-label={title}
       tabIndex={0}
-      className={classNames("text-left p-10 border rounded-[24px] transition-all duration-150", {
+      className={classNames("text-left p-10 border rounded-3xl transition-all duration-150", {
         "border-[#C4C4C4]": !selected,
         "border-primary shadow-card bg-[#FFE1DA]/[0.21]": selected,
       })}
@@ -32,7 +32,7 @@ export const RoleCard = ({ title, description, buttonText, selected, onClick }: 
         </h3>
         <button
           className={classNames(
-            "w-[26px] h-[26px] rounded-full border p-[9px] flex items-center justify-center",
+            "w-[26px] h-[26px] rounded-full border p-2 flex items-center justify-center",
             {
               "border-[#C4C4C4]": !selected,
               "border-primary": selected,
@@ -43,7 +43,7 @@ export const RoleCard = ({ title, description, buttonText, selected, onClick }: 
         </button>
       </div>
 
-      <p className="text-[#6E6E6E] text-xl">{description}</p>
+      <p className="text-secondary text-lg">{description}</p>
       {selected && (
         <div className="text-left mt-6">
           <Button>{buttonText}</Button>

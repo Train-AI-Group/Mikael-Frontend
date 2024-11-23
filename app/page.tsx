@@ -6,13 +6,13 @@ import { RolesSection } from "@/features/RolesSection/RolesSection"
 
 export default function Home() {
   return (
-    <>
+    <div className="mx-auto max-w-7xl">
       <Hero>
         <HomepageHeader />
       </Hero>
       <RolesSection />
       <FaqSection />
       <HomepageFooter />
-    </>
+    </div>
   )
 }
