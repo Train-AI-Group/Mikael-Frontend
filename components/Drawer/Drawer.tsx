@@ -10,10 +10,10 @@ interface DrawerProps {
 
 const Drawer = ({ title = "", children, open, setOpen }: DrawerProps) => {
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
+    <Dialog open={open} onClose={setOpen} className="relative z-40">
       <DialogBackdrop
         transition
-        className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
+        className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0 "
       />
 
       <div className="fixed inset-0 overflow-hidden">
