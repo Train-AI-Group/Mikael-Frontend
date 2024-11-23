@@ -24,7 +24,7 @@ export const RoleCard = ({ title, description, buttonText, selected, onClick }: 
     >
       <div className="flex items-center justify-between mb-4">
         <h3
-          className={classNames("text-black text-3xl font-semibold", {
+          className={classNames("text-black text-2xl font-semibold", {
             "text-primary": selected,
           })}
         >
