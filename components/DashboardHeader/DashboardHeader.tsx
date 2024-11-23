@@ -8,10 +8,10 @@ import Drawer from "../Drawer/Drawer"
 import ProfilePreviewPanel from "../Profile/SidePanel/ProfilePreviewPanel"
 
 export const DashboardHeader = () => {
-  // const { connected } = useConnection()
+  const { connected } = useConnection()
   const [user, setUser] = useState(null)
   const [open, setOpen] = useState(false)
-  const connected = true
+
   const getRandomInfo = async () => {
     const response = await fetch("https://randomuser.me/api/")
     const data = await response.json()
