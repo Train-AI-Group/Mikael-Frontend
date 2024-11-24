@@ -107,7 +107,7 @@ const NewDatasetForm = () => {
       domain: data.domains,
       method: data.method,
       is_data_clean: data.clean,
-      zipFile: data.file,
+      zipfile: data.file,
       walletAddress,
     }
 

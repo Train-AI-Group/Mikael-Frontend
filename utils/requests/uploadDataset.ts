@@ -10,16 +10,16 @@ export interface UploadDatasetPayload {
   domain: string
   method: string
   is_data_clean: boolean
-  zipFile: File
+  zipfile: File
   walletAddress: string
 }
 
 export async function uploadDataset(payload: UploadDatasetPayload): Promise<UploadDatasetResponse> {
   const formData = new FormData()
 
-  const { zipFile, ...restPayload } = payload
+  const { zipfile, ...restPayload } = payload
 
-  formData.append("zipFile", zipFile)
+  formData.append("zipfile", zipfile)
 
   Object.entries(restPayload).forEach(([key, value]) => {
     formData.append(key, String(value))
