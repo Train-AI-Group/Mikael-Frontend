@@ -1,18 +1,23 @@
-import React, { useState } from "react"
-import SimpleInput from "../Inputs/SimpleInput"
-import { Selector, SelectorOption } from "../Inputs/Selector"
+import { useForm, Controller } from "react-hook-form"
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid"
 import { Description, Field, Label, Switch } from "@headlessui/react"
+import { useCallback } from "react"
+import { useDropzone } from "react-dropzone"
+import classNames from "classnames"
+
+import SimpleInput from "../Inputs/SimpleInput"
+import { Selector, SelectorOption } from "../Inputs/Selector"
 import EstimatedErnings from "../EstimatedErnings/EstimatedErnings"
 import { Button } from "../Button/Button"
 
-interface newDataset {
+interface DatasetFormValues {
   name: string
   visibility: string
   fieldOfStudy: string
   domains: string
   methods: string
   clean: boolean
+  file?: File
 }
 
 const visibilityOptions = [
@@ -39,104 +44,145 @@ const methodOptions = [
 ]
 
 const NewDatasetForm = () => {
-  const [newDataset, setNewDataset] = useState<newDataset>({
-    name: "",
-    visibility: "",
-    fieldOfStudy: "",
-    domains: "",
-    methods: "",
-    clean: false,
+  const { control, handleSubmit, setValue } = useForm<DatasetFormValues>({
+    defaultValues: {
+      name: "",
+      visibility: "public",
+      fieldOfStudy: "machine-learning",
+      domains: "nlp",
+      methods: "classification",
+      clean: false,
+    },
   })
-  const handleSubmit = () => {
-    console.log(newDataset)
+
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      if (acceptedFiles.length > 0) {
+        setValue("file", acceptedFiles[0])
+      }
+    },
+    [setValue]
+  )
+
+  const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({
+    onDrop,
+    accept: {
+      "application/zip": [".zip"],
+    },
+    maxFiles: 1,
+  })
+
+  const onSubmit = (data: DatasetFormValues) => {
+    console.log(data)
   }
+
   return (
     <>
-      <form className="space-y-6">
-        {/* DataSet Name */}
-        <SimpleInput
-          label="Dataset Name"
-          placeholder="Enter dataset title"
-          value={newDataset.name}
-          onChange={(e) => setNewDataset({ ...newDataset, name: e.target.value })}
-        />
-        {/* Visibility */}
-        <Selector
-          label="Visibility"
-          selected={
-            visibilityOptions.find((option) => option.value === newDataset.visibility) ||
-            visibilityOptions[0]
-          }
-          onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, visibility: option.value })
-          }
-          options={visibilityOptions}
+      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="name"
+          control={control}
+          rules={{ required: "Dataset name is required" }}
+          render={({ field }) => (
+            <SimpleInput label="Dataset Name" placeholder="Enter dataset title" {...field} />
+          )}
         />
 
-        {/* Field of Study */}
-        <Selector
-          label="Field of Study"
-          selected={
-            fieldOfStudyOptions.find((option) => option.value === newDataset.fieldOfStudy) ||
-            fieldOfStudyOptions[0]
-          }
-          onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, fieldOfStudy: option.value })
-          }
-          options={fieldOfStudyOptions}
-        />
-
-        {/* Domains */}
-        <Selector
-          label="Domains"
-          selected={
-            domainOptions.find((option) => option.value === newDataset.domains) || domainOptions[0]
-          }
-          onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, domains: option.value })
-          }
-          options={domainOptions}
-        />
-
-        {/* Methods */}
-        <Selector
-          label="Methods"
-          selected={
-            methodOptions.find((option) => option.value === newDataset.methods) || methodOptions[0]
-          }
-          onChange={(option: SelectorOption) =>
-            setNewDataset({ ...newDataset, methods: option.value })
-          }
-          options={methodOptions}
-        />
-
-        {/* Clean */}
-
-        <Field className="flex items-center justify-between ">
-          <span className="flex grow flex-col">
-            <Label as="span" passive className="text-sm/6  font-medium text-gray-900">
-              Clean Dataset
-            </Label>
-            <Description as="span" className="text-sm text-secondary">
-              Define if the dataset is clean or not.
-            </Description>
-          </span>
-          <Switch
-            checked={newDataset.clean}
-            onChange={(checked) => setNewDataset({ ...newDataset, clean: checked })}
-            className="group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 data-[checked]:bg-primary"
-          >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-5"
+        <Controller
+          name="visibility"
+          control={control}
+          render={({ field: { value, onChange } }) => (
+            <Selector
+              label="Visibility"
+              selected={
+                visibilityOptions.find((option) => option.value === value) || visibilityOptions[0]
+              }
+              onChange={(option: SelectorOption) => onChange(option.value)}
+              options={visibilityOptions}
             />
-          </Switch>
-        </Field>
+          )}
+        />
 
-        <button
-          type="button"
-          className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        <Controller
+          name="fieldOfStudy"
+          control={control}
+          render={({ field: { value, onChange } }) => (
+            <Selector
+              label="Field of Study"
+              selected={
+                fieldOfStudyOptions.find((option) => option.value === value) ||
+                fieldOfStudyOptions[0]
+              }
+              onChange={(option: SelectorOption) => onChange(option.value)}
+              options={fieldOfStudyOptions}
+            />
+          )}
+        />
+
+        <Controller
+          name="domains"
+          control={control}
+          render={({ field: { value, onChange } }) => (
+            <Selector
+              label="Domains"
+              selected={domainOptions.find((option) => option.value === value) || domainOptions[0]}
+              onChange={(option: SelectorOption) => onChange(option.value)}
+              options={domainOptions}
+            />
+          )}
+        />
+
+        <Controller
+          name="methods"
+          control={control}
+          render={({ field: { value, onChange } }) => (
+            <Selector
+              label="Methods"
+              selected={methodOptions.find((option) => option.value === value) || methodOptions[0]}
+              onChange={(option: SelectorOption) => onChange(option.value)}
+              options={methodOptions}
+            />
+          )}
+        />
+
+        <Controller
+          name="clean"
+          control={control}
+          render={({ field: { value, onChange } }) => (
+            <Field className="flex items-center justify-between">
+              <span className="flex grow flex-col">
+                <Label as="span" passive className="text-sm/6 font-medium text-gray-900">
+                  Clean Dataset
+                </Label>
+                <Description as="span" className="text-sm text-secondary">
+                  Define if the dataset is clean or not.
+                </Description>
+              </span>
+              <Switch
+                checked={value}
+                onChange={onChange}
+                className="group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 data-[checked]:bg-primary"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-5"
+                />
+              </Switch>
+            </Field>
+          )}
+        />
+
+        <div
+          {...getRootProps()}
+          className={classNames(
+            "relative block w-full rounded-lg border-2 border-dashed p-12 text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+            {
+              "border-gray-300 hover:border-gray-400": !isDragActive,
+              "border-primary bg-primary/5": isDragActive,
+            }
+          )}
         >
+          <input {...getInputProps()} />
           <svg
             fill="none"
             stroke="currentColor"
@@ -152,17 +198,26 @@ const NewDatasetForm = () => {
             />
           </svg>
           <span className="mt-2 block text-sm font-semibold text-secondary">
-            Drag And Drop file here
+            {isDragActive
+              ? "Drop the ZIP file here"
+              : acceptedFiles.length > 0
+                ? acceptedFiles[0].name
+                : "Drag and drop ZIP file here, or click to select"}
           </span>
-        </button>
+          {acceptedFiles.length > 0 && (
+            <span className="mt-1 block text-xs text-gray-500">
+              {(acceptedFiles[0].size / (1024 * 1024)).toFixed(2)} MB
+            </span>
+          )}
+        </div>
+
+        <div className="flex-1 flex items-center py-8 justify-between mt-12 border-t">
+          <EstimatedErnings number={100} />
+          <Button type="submit" variant="secondary" className="text-secondary">
+            Create
+          </Button>
+        </div>
       </form>
-      {/* Submit  */}
-      <div className="flex-1 flex items-center py-8 justify-between mt-12 border-t">
-        <EstimatedErnings number={100} />
-        <Button variant="secondary" className="text-secondary" onClick={handleSubmit}>
-          Create
-        </Button>
-      </div>
     </>
   )
 }
