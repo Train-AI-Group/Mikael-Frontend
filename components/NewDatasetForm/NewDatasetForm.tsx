@@ -1,21 +1,27 @@
+"use client"
+
 import { useForm, Controller } from "react-hook-form"
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid"
 import { Description, Field, Label, Switch } from "@headlessui/react"
 import { useCallback } from "react"
 import { useDropzone } from "react-dropzone"
 import classNames from "classnames"
+import { useMutation } from "@tanstack/react-query"
+import { toast } from "sonner"
 
 import SimpleInput from "../Inputs/SimpleInput"
 import { Selector, SelectorOption } from "../Inputs/Selector"
 import EstimatedErnings from "../EstimatedErnings/EstimatedErnings"
 import { Button } from "../Button/Button"
+import { useActiveAddress } from "arweave-wallet-kit"
+import { uploadDataset } from "@/utils/requests/uploadDataset"
 
 interface DatasetFormValues {
   name: string
   visibility: string
   fieldOfStudy: string
   domains: string
-  methods: string
+  method: string
   clean: boolean
   file?: File
 }
@@ -44,14 +50,26 @@ const methodOptions = [
 ]
 
 const NewDatasetForm = () => {
-  const { control, handleSubmit, setValue } = useForm<DatasetFormValues>({
+  const walletAddress = useActiveAddress()
+  const { control, handleSubmit, setValue, reset } = useForm<DatasetFormValues>({
     defaultValues: {
       name: "",
       visibility: "public",
       fieldOfStudy: "machine-learning",
       domains: "nlp",
-      methods: "classification",
+      method: "classification",
       clean: false,
+    },
+  })
+
+  const uploadMutation = useMutation({
+    mutationFn: uploadDataset,
+    onSuccess: () => {
+      toast.success("Dataset uploaded successfully")
+      reset() // Reset form after successful upload
+    },
+    onError: (error: Error) => {
+      toast.error(`Failed to upload dataset: ${error.message}`)
     },
   })
 
@@ -73,7 +91,29 @@ const NewDatasetForm = () => {
   })
 
   const onSubmit = (data: DatasetFormValues) => {
-    console.log(data)
+    if (!data.file) {
+      toast.error("Please select a file to upload")
+      return
+    }
+
+    if (!walletAddress) {
+      toast.error("Please connect your wallet")
+      return
+    }
+
+    const payload = {
+      dataset_name: data.name,
+      field_of_study: data.fieldOfStudy,
+      domain: data.domains,
+      method: data.method,
+      is_data_clean: data.clean,
+      zipFile: data.file,
+      walletAddress,
+    }
+
+    console.log({ payload })
+
+    uploadMutation.mutate(payload)
   }
 
   return (
@@ -133,7 +173,7 @@ const NewDatasetForm = () => {
         />
 
         <Controller
-          name="methods"
+          name="method"
           control={control}
           render={({ field: { value, onChange } }) => (
             <Selector
@@ -179,10 +219,11 @@ const NewDatasetForm = () => {
             {
               "border-gray-300 hover:border-gray-400": !isDragActive,
               "border-primary bg-primary/5": isDragActive,
+              "opacity-50 cursor-not-allowed": uploadMutation.isPending,
             }
           )}
         >
-          <input {...getInputProps()} />
+          <input {...getInputProps()} disabled={uploadMutation.isPending} />
           <svg
             fill="none"
             stroke="currentColor"
@@ -213,10 +254,28 @@ const NewDatasetForm = () => {
 
         <div className="flex-1 flex items-center py-8 justify-between mt-12 border-t">
           <EstimatedErnings number={100} />
-          <Button type="submit" variant="secondary" className="text-secondary">
-            Create
-          </Button>
+          <div className="flex items-center gap-4">
+            {uploadMutation.isPending && (
+              <span className="text-sm text-secondary">Uploading dataset...</span>
+            )}
+            <Button
+              type="submit"
+              variant="secondary"
+              className={classNames("text-secondary", {
+                "opacity-50 cursor-not-allowed": uploadMutation.isPending,
+              })}
+              disabled={uploadMutation.isPending}
+            >
+              {uploadMutation.isPending ? "Uploading..." : "Create"}
+            </Button>
+          </div>
         </div>
+
+        {uploadMutation.isError && (
+          <div className="text-sm text-red-600">
+            {uploadMutation.error instanceof Error ? uploadMutation.error.message : "Upload failed"}
+          </div>
+        )}
       </form>
     </>
   )
