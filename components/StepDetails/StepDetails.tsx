@@ -17,8 +17,8 @@ export const StepDetail = ({ image, step, title, description }: StepDetailProps)
         </StepIcon>
       </div>
       <div className="flex flex-col">
-        <span className="text-2xl text-primary mb-7 uppercase">Step {step}</span>
-        <h3 className="text-3xl font-medium text-black mb-4">{title}</h3>
+        <span className="text-xl text-primary mb-7 uppercase">Step {step}</span>
+        <h3 className="text-2xl font-medium text-black mb-4 whitespace-nowrap">{title}</h3>
         <p className="text-lg font-normal text-secondary">{description}</p>
       </div>
     </div>

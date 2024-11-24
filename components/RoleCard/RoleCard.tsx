@@ -16,7 +16,7 @@ export const RoleCard = ({ title, description, buttonText, selected, onClick }: 
       aria-selected={selected}
       aria-label={title}
       tabIndex={0}
-      className={classNames("text-left p-10 border rounded-3xl transition-all duration-150", {
+      className={classNames("text-left p-10 border rounded-3xl transition-all duration-150 bg-white", {
         "border-[#C4C4C4]": !selected,
         "border-primary shadow-card bg-[#FFE1DA]/[0.21]": selected,
       })}
@@ -24,7 +24,7 @@ export const RoleCard = ({ title, description, buttonText, selected, onClick }: 
     >
       <div className="flex items-center justify-between mb-4">
         <h3
-          className={classNames("text-black text-3xl font-semibold", {
+          className={classNames("text-black text-2xl font-semibold", {
             "text-primary": selected,
           })}
         >
