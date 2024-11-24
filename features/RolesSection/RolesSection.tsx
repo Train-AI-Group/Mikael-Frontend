@@ -49,7 +49,7 @@ export const RolesSection = () => {
 
   return (
     <div className="container mx-auto ">
-      <div className="flex sm:flex-row sm:space-x-28 items-center">
+      <div className="flex flex-col px-4 sm:flex-row sm:space-x-9 lg:space-x-28 items-center">
         <div className="flex flex-1 flex-col gap-10">
           <h2 className="font-medium text-black text-3xl">Choose a role</h2>
 
@@ -71,7 +71,7 @@ export const RolesSection = () => {
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-10 relative" style={{ marginTop: "80px" }}>
-          <div className="absolute h-full w-[1px] -top-24 left-10 -z-50">
+          <div className="absolute h-full w-[1px] -top-28 left-10 -z-50">
             <VerticleLine />
           </div>
           {roles[selectedRole].map((role, index) => (
@@ -97,13 +97,13 @@ const VerticleLine = () => {
         <linearGradient
           id="paint0_linear_62_1942"
           x1="1.5"
-          y1="-2.18557e-08"
+          y1="0"
           x2="1.50003"
           y2="637"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFDDD5" />
-          <stop offset="1" stop-color="#D72B00" />
+          <stop stopColor="#FFDDD5" />
+          <stop offset="1" stopColor="#D72B00" />
         </linearGradient>
       </defs>
     </svg>
