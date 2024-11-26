@@ -22,8 +22,8 @@ const navigation = [
   { name: "Ranking", href: "/rankings", icon: <StarIcon /> },
 ]
 const bottomNavigation = [
-  { name: "Settings", href: "/settings", icon: <SettingsIcon /> },
-  { name: "Help", href: "/help", icon: <HelpIcon /> },
+  // { name: "Settings", href: "/settings", icon: <SettingsIcon /> },
+  // { name: "Help", href: "/help", icon: <HelpIcon /> },
 ]
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {

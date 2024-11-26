@@ -7,25 +7,26 @@ import { slugify } from "@/utils/slugify"
 interface DatasetProps {
   title: string
   authorName: string
-  updatedTimeAgo: string
+  // updatedTimeAgo: string
   usability: number
   numberOfFiles: number
-  weightOfFiles: number
+  weightOfFiles: string
   authorProfileUrl: string
-  likesCount: number
+  // likesCount: number
 }
 
 export const Dataset = ({
   title,
   authorName,
-  updatedTimeAgo,
+  // updatedTimeAgo,
   usability,
   numberOfFiles,
   weightOfFiles,
   authorProfileUrl,
-  likesCount,
+  // likesCount,
 }: DatasetProps) => {
   const slug = slugify(title)
+  console.log('slug', slug)
 
   return (
     <div className="flex flex-row items-start space-between py-8 border-b border-[#C4C4C4] mx-8">
@@ -53,7 +54,8 @@ export const Dataset = ({
             >
               {authorName}
             </Link>
-            <span className="font-inter text-sm text-[#6e6e6e]">Updated {updatedTimeAgo}</span>
+            {/* TODO: add time to db */}
+            {/*<span className="font-inter text-sm text-[#6e6e6e]">Updated {updatedTimeAgo}</span>*/}
           </div>
           <div className="flex flex-row items-center gap-6">
             <span
@@ -74,10 +76,10 @@ export const Dataset = ({
       </div>
 
       <div className="flex flex-col justify-between h-full items-end">
-        <div className="flex flex-row gap-2 pt-[18px] font-inter text-sm font-medium">
-          {likesCount}
-          <HeartIcon />
-        </div>
+        {/*<div className="flex flex-row gap-2 pt-[18px] font-inter text-sm font-medium">*/}
+        {/*  {likesCount}*/}
+        {/*  <HeartIcon />*/}
+        {/*</div>*/}
         <div className="text-primary mb-6">
           <EllipsisIcon />
         </div>
