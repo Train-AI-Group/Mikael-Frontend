@@ -21,7 +21,6 @@ async function fetchDatasets() {
 
   const txn_ids_array = txn_ids.map(item => item.transaction_id);
   const data = await fetch("http://localhost:3000/auth/fetchAllDataset", {
-    method: "POST",
     body: JSON.stringify({
       "transactionIds": txn_ids_array,
     }),
