@@ -30,7 +30,8 @@ export const Dataset = ({
   return (
     <div className="flex flex-row items-start space-between py-8 border-b border-[#C4C4C4] mx-8">
       <div className="flex flex-row flex-1 gap-6">
-        <Link href={`/datasets/${slug}`}>
+        <Link href={`/datasets/uElDx6rnRun9ZgxrxhE6DvNFNzY7zZeRMB1me8xSuHU`}>
+          {/* <Link href={`/datasets/${slug}`}> */}
           <div className="h-[130px] w-[130px] flex-shrink-0 bg-gray-200 rounded-lg">
             {/* <Image
           src="https://placehold.co/130x130"

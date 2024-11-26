@@ -1,6 +1,11 @@
+"use client"
+
 import { TagPill } from "@/components/TagPill/TagPill"
+import { useDatasetContext } from "@/features/DatasetProvider/DatasetProvider"
 
 export const EntryDetails = () => {
+  const { dataset } = useDatasetContext()
+
   return (
     <div className="flex flex-col gap-7 w-52 flex-shrink-0">
       <div className="flex flex-col gap-2">
@@ -14,9 +19,15 @@ export const EntryDetails = () => {
       <div className="flex flex-col gap-2">
         <p className="font-inter text-xl font-medium text-black">Tags</p>
         <div className="flex flex-row flex-wrap gap-2">
-          <TagPill size="small">Tag 1</TagPill>
-          <TagPill size="small">Tag 2</TagPill>
-          <TagPill size="small">Tag 3</TagPill>
+          {dataset.tags
+            .filter((tag) =>
+              ["Field-Of-Study", "Domain", "Method", "Is-Data-Clean", "Status"].includes(tag.name)
+            )
+            .map((tag) => (
+              <TagPill size="small" key={tag.name}>
+                {tag.name}: {tag.value}
+              </TagPill>
+            ))}
         </div>
       </div>
     </div>

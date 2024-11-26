@@ -1,8 +1,14 @@
+"use client"
+
 import { EntryDetails } from "@/components/EntryDetails/EntryDetails"
 import { EntrySubHeading } from "@/components/EntrySubHeading/EntrySubHeading"
 import { FileDetails } from "@/components/FileDetails/FileDetails"
+import { useDatasetContext } from "@/features/DatasetProvider/DatasetProvider"
+import { formatFileSize } from "@/utils/formatters/formatFileSize"
 
 export default function DatasetDataCardPage() {
+  const { dataset } = useDatasetContext()
+
   return (
     <div className="px-8 py-6 overflow-hidden">
       <div className="flex flex-row max-lg:flex-col gap-20">
@@ -18,7 +24,10 @@ export default function DatasetDataCardPage() {
               4 categories.
             </p>
           </EntrySubHeading>
-          <FileDetails fileName="Carbon_(CO2)_Emissions_by_Country.csv" fileSize="1.2MB">
+          <FileDetails
+            fileName={dataset.files[0].name}
+            fileSize={formatFileSize(dataset.files[0].size)}
+          >
             <p>
               This dataset provides a comprehensive look at carbon dioxide (CO₂) emissions on a
               country-by-country basis, enabling analysis of both historical trends and recent
