@@ -5,6 +5,7 @@ import { HomeIcon } from "@/components/icons/HomeIcon/HomeIcon"
 import { ModelsIcon } from "@/components/icons/ModelsIcon/ModelsIcon"
 import { SettingsIcon } from "@/components/icons/SettingsIcon/SettingsIcon"
 import { StarIcon } from "@/components/icons/StarIcon/StarIcon"
+import { Braces } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -40,6 +41,9 @@ export const DashboardNavigation = () => {
             </li>
             <li>
               <DashboardNavigationLink icon={<StarIcon />} label="Rankings" href="/rankings" />
+            </li>
+            <li>
+              <DashboardNavigationLink icon={<Braces className="h-5 w-5" />} label="Data Labeling" href="/annotate" />
             </li>
           </ul>
         </nav>
