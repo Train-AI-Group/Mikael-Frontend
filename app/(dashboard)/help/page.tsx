@@ -4,7 +4,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 export default function HelpPage() {
   return (
     <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-6 font-mono">Help & FAQs</h1>
+      <h1 className="font-inter text-[40px] font-medium mb-6">Help & FAQs</h1>
 
       <Accordion className="mx-5" type="single" collapsible>
         <AccordionItem value="item-1">

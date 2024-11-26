@@ -16,7 +16,7 @@ export default function SettingsPage() {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-6 font-mono">Settings <span className="text-xl font-thin">(example)</span></h1>
+      <h1 className=" font-inter text-[40px] font-medium mb-6">Settings <span className="text-xl font-thin">(example)</span></h1>
 
       <Card>
         <CardHeader>

@@ -21,8 +21,8 @@ export default function RankingsPage() {
   ]
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-6 flex gap-4 items-center font-mono">
+    <div className="container mx-auto py-5 px-4">
+      <h1 className="text-3xl mb-6 flex gap-4 items-center font-inter text-[48px] font-medium">
         <StarIcon className="h-7 w-7 text-yellow-400" />
         Rankings <span className="text-xl font-thin">(example)</span>
       </h1>

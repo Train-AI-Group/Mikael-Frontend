@@ -125,7 +125,7 @@ const Annotator = () => {
 
   return (
     <div className="h-full flex flex-col items-center">
-      <h1 className="text-3xl ml-4 font-semibold font-mono">Image Annotation</h1>
+      <h1 className=" font-inter text-[40px] font-medium">Image Annotation</h1>
       <Card className="m-4 p-4 space-y-2 items-center justify-center">
         <input
           type="file"
@@ -154,7 +154,7 @@ const Annotator = () => {
                 <label htmlFor="r2">Polygon <span className="text-xs text-muted-foreground">(double-click to finish)</span></label>
               </div>
             </RadioGroup>
-            <div id="openseadragon-viewer" className="h-[40vh] w-[40vw] md:!w-[50vw] md:!h-[50vh] lg:!h-[60vh] lg:!w-[60vw] xl:!w-[70vw]"></div>
+            <div id="openseadragon-viewer" className="h-[40vh] w-[40vw] md:!w-[50vw] md:!h-[50vh] lg:!h-[55vh] lg:!w-[55vw] xl:!w-[60vw]"></div>
             <Card className="w-fit space-y-1 mt-2 p-2">
               <h2>✏️- Use the toolbar above to select a shape. Press 'Shift' to draw.</h2>
               <h2>⌨️- Press 'F' to Flip the object. 'R' to Rotate.</h2>
