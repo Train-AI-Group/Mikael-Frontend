@@ -1,5 +1,5 @@
 import { EllipsisIcon } from "@/components/icons/EllipsisIcon/EllipsisIcon"
-import { HeartIcon } from "@/components/icons/HeartIcon/HeartIcon"
+// import { HeartIcon } from "@/components/icons/HeartIcon/HeartIcon"
 import classNames from "classnames"
 import Link from "next/link"
 import { slugify } from "@/utils/slugify"

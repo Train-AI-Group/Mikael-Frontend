@@ -20,7 +20,7 @@ async function fetchDatasets() {
   }
 
   const txn_ids_array = txn_ids.map(item => item.transaction_id);
-  let data = await fetch("http://localhost:3000/auth/fetchAllDataset", {
+  const data = await fetch("http://localhost:3000/auth/fetchAllDataset", {
     method: "POST",
     body: JSON.stringify({
       "transactionIds": txn_ids_array,
@@ -29,7 +29,7 @@ async function fetchDatasets() {
       "Content-Type": "application/json",
     },
   });
-  let response = await data.json();
+  const response = await data.json();
   console.log('res', response);
 
   // Decode the base64-encoded tags
@@ -44,12 +44,6 @@ async function fetchDatasets() {
 
 export default async function Dashboard() {
   const datasets = await fetchDatasets();
-  function bytesToGB(bytes: number): string {
-    // Convert bytes to gigabytes
-    const gigabytes = bytes / (1024 ** 3); // or 1073741824
-    // Convert the result to a string and slice the first 5 characters
-    return gigabytes.toString().slice(0, 6);
-  }
 
   return (
     <>
