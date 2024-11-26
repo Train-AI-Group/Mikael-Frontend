@@ -12,6 +12,7 @@ export const homepageNavItems: NavItem[] = [
   { label: "How it works", href: "/how-it-works" },
   { label: "Datasets", href: "/datasets" },
   { label: "Models", href: "/models" },
+  { label: "Data Annotation", href: "/annotate" },
   { label: "FAQs", href: "/faqs" },
 ]
 

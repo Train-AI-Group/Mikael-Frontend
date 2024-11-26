@@ -124,7 +124,7 @@ const Annotator = () => {
   };
 
   return (
-    <div className="h-full flex flex-col items-center -my-8">
+    <div className="h-full flex flex-col items-center">
       <h1 className="text-3xl ml-4 font-semibold font-mono">Image Annotation</h1>
       <Card className="m-4 p-4 space-y-2 items-center justify-center">
         <input
