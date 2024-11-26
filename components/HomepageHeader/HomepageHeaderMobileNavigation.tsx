@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button/Button"
 import { homepageNavItems } from "@/components/HomepageHeader/HomepageHeader"
+import { SignUpButton } from "@/features/SignUpButton/SignUpButton"
 import Link from "next/link"
 import { useRef, useState } from "react"
 
@@ -49,7 +50,7 @@ export const HomepageHeaderMobileNavigation = () => {
               </Link>
             ))}
             <div className="px-3 py-2">
-              <Button fullWidth>Sign Up</Button>
+              <SignUpButton />
             </div>
           </div>
         </div>

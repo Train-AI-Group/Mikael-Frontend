@@ -10,12 +10,12 @@ interface FileDetailsProps {
 export const FileDetails = ({ children, fileName, fileSize }: FileDetailsProps) => {
   return (
     <div className="flex flex-col border border-[#c4c4c4] rounded-2xl">
-      <button className="flex flex-row items-center justify-between gap-6 px-12 pt-11 pb-10 text-black hover:text-primary">
-        <div className="flex flex-row items-center gap-6">
-          <div className="font-inter text-xl font-medium">{fileName}</div>
+      <button className="flex flex-row items-start sm:items-center justify-between gap-6 px-12 pt-11 pb-10 text-black hover:text-primary">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
+          <div className="font-inter text-xl font-medium break-all">{fileName}</div>
           <div className="font-inter text-base text-[#6E6E6E]">({fileSize})</div>
         </div>
-        <div>
+        <div className="flex-shrink-0">
           <UploadIcon />
         </div>
       </button>

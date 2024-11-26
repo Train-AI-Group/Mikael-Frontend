@@ -8,7 +8,7 @@ export default function DatasetLayout({ children }: { children: React.ReactNode 
   return (
     <>
       <div className="px-8">
-        <div className="flex flex-row justify-between mb-14">
+        <div className="flex flex-row max-lg:flex-col-reverse max-lg:gap-4 justify-between mb-14">
           <EntryAuthor
             src="/img/small-avatar.png"
             name="John Doe"
@@ -16,7 +16,7 @@ export default function DatasetLayout({ children }: { children: React.ReactNode 
             createdAt="2024-01-01"
             likes={10}
           />
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row gap-3 max-lg:justify-end">
             <Button variant="outlined" icon={<AddIcon />}>
               New Notebook
             </Button>

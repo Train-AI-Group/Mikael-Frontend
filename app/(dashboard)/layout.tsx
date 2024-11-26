@@ -71,7 +71,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </TransitionChild>
               <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
                 <div className="flex h-16 shrink-0 items-center">
-                  <Link href="/dashboard">
+                  <Link href="/">
                     <Image
                       src="/img/logo.svg"
                       alt="Dashboard Home"
@@ -151,11 +151,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <DashboardNavigationLink icon={item.icon} label={item.name} href={item.href} />
                   </li>
                 ))}
-                {!connected && (
-                  <li className="flex justify-center my-8">
-                    <SignUpButton />
-                  </li>
-                )}
+                <li className="flex justify-center my-8">
+                  <SignUpButton />
+                </li>
               </ul>
             </nav>
           </div>

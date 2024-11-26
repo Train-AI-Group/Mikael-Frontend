@@ -1,29 +1,24 @@
 "use client"
 
 import Link from "next/link"
-import { ReactNode } from "react"
-import { useParams, usePathname } from "next/navigation"
+import { PropsWithChildren } from "react"
 import classNames from "classnames"
+import { usePathname } from "next/navigation"
 
-interface DatasetNavigationLinkProps {
-  children: ReactNode
+interface DatasetNavigationLinkProps extends PropsWithChildren {
   href: string
 }
 
 export const DatasetNavigationLink = ({ children, href }: DatasetNavigationLinkProps) => {
   const pathname = usePathname()
-  const params = useParams()
-  const fullHref = `/datasets/${params.slug}${href}`
-  const isActive = pathname === fullHref
+  const isActive = pathname.endsWith(href)
 
   return (
     <Link
-      href={fullHref}
+      href={href}
       className={classNames(
-        "inline-block py-4 font-inter text-lg border-b-2 transition-colors mb-[-1px]",
-        isActive
-          ? "text-primary border-primary"
-          : "text-[#6E6E6E] border-transparent hover:text-primary"
+        "py-4 whitespace-normal text-center min-w-[80px]",
+        isActive ? "border-b-2 border-black text-black" : "text-[#737373] hover:text-black"
       )}
     >
       {children}

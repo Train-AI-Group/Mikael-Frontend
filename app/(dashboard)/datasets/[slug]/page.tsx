@@ -4,8 +4,8 @@ import { FileDetails } from "@/components/FileDetails/FileDetails"
 
 export default function DatasetDataCardPage() {
   return (
-    <div className="px-8 py-6">
-      <div className="flex flex-row gap-20">
+    <div className="px-8 py-6 overflow-hidden">
+      <div className="flex flex-row max-lg:flex-col gap-20">
         <div className="flex flex-col gap-10">
           <EntrySubHeading title="About Dataset">
             <p>
