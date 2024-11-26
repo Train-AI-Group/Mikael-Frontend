@@ -9,8 +9,8 @@ import { ModelsIcon } from "@/components/icons/ModelsIcon/ModelsIcon"
 import { DatasetsIcon } from "@/components/icons/DatasetsIcon/DatasetsIcon"
 import { StarIcon } from "@/components/icons/StarIcon/StarIcon"
 import { HomeIcon } from "@/components/icons/HomeIcon/HomeIcon"
-import { SettingsIcon } from "@/components/icons/SettingsIcon/SettingsIcon"
-import { HelpIcon } from "@/components/icons/HelpIcon/HelpIcon"
+// import { SettingsIcon } from "@/components/icons/SettingsIcon/SettingsIcon"
+// import { HelpIcon } from "@/components/icons/HelpIcon/HelpIcon"
 import Drawer from "@/components/Drawer/Drawer"
 import ProfilePreviewPanel from "@/components/Profile/SidePanel/ProfilePreviewPanel"
 import { SignUpButton } from "@/features/SignUpButton/SignUpButton"
@@ -24,8 +24,8 @@ const navigation = [
   { name: "Annotation", href: "/annotate", icon: <Braces className="h-5 w-5" /> },
 ]
 const bottomNavigation = [
-  { name: "Settings", href: "/settings", icon: <SettingsIcon /> },
-  { name: "Help", href: "/help", icon: <HelpIcon /> },
+  // { name: "Settings", href: "/settings", icon: <SettingsIcon /> },
+  // { name: "Help", href: "/help", icon: <HelpIcon /> },
 ]
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
