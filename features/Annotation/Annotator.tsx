@@ -1,18 +1,19 @@
-import * as Annotorious from "@recogito/annotorious-openseadragon";
+import Annotorious from "@recogito/annotorious-openseadragon";
 import OpenSeaDragon from "openseadragon";
 import { useEffect, useRef, useState } from "react";
-import '@annotorious/annotorious/annotorious.css';
-import "@recogito/annotorious-openseadragon/dist/annotorious.min.css";
+import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 const Annotator = () => {
   const [viewer, setViewer] = useState<OpenSeaDragon.Viewer | null>(null);
-  const [annotorious, setAnnotorious] = useState<Annotorious.Annotorious | null>(null);
+  const [annotorious, setAnnotorious] = useState<any | null>(null);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [annotations, setAnnotations] = useState<any[]>([]);
+  const [selectedShape, setSelectedShape] = useState('rect');
 
-  const inputRef = useRef<HTMLInputElement>(null); // Ref for the file input
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -30,7 +31,6 @@ const Annotator = () => {
       reader.readAsDataURL(event.target.files[0]);
     }
   };
-
 
   useEffect(() => {
     let osdViewer: OpenSeaDragon.Viewer | null = null;
@@ -55,8 +55,31 @@ const Annotator = () => {
 
       setViewer(osdViewer);
 
-      ann = Annotorious(osdViewer);
+      let ann: any;
+      if (!osdViewer) return;
+
+      const config = {
+        toolbarPosition: 'top',
+        drawingTools: [selectedShape],
+        drawingTool: selectedShape,
+        drawingMode: 'rect',
+        locale: 'auto',
+        widgets: [
+          'COMMENT',
+          {
+            widget: 'TAG',
+            vocabulary: ['Person', 'Animal', 'Plant', 'Building', 'Other']
+          }
+        ],
+        allowEmpty: true
+
+      };
+
+      ann = Annotorious(osdViewer, config);
+
       ann.setAnnotations(annotations);
+
+
 
       ann.on('createAnnotation', (annotation: any) => {
         setAnnotations([...annotations, annotation]);
@@ -80,7 +103,13 @@ const Annotator = () => {
       if (ann) ann.destroy();
     };
 
-  }, [imageSrc, annotations]);
+  }, [imageSrc, selectedShape]);
+
+  useEffect(() => {
+    if (annotorious) {
+      annotorious.setDrawingTool(selectedShape);
+    }
+  }, [selectedShape, annotorious]);
 
   const handleDownload = () => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(annotations));
@@ -93,34 +122,46 @@ const Annotator = () => {
   };
 
   return (
-    <Card className="m-2 p-4 w-fit space-y-2">
-      <h1 className="text-xl font-bold text-center">Image Annotation</h1>
-      <input
-        type="file"
-        onChange={handleImageChange}
-        accept="image/*"
-        className="hidden"  // Hidden file input
-        ref={inputRef}       // Assign the ref
-      />
-      <div className="flex gap-4">
-        <Button onClick={() => inputRef.current?.click()}>
-          Upload Image
-        </Button>
-        <Button onClick={handleDownload} variant="outline">
-          Download Annotations
-        </Button>
-      </div>
-      {imageSrc && (
-        <div className="map-container" id="map">
-          <div
-            id="openseadragon-viewer"
-            style={{ width: "50vw", height: "75vh" }}
-          ></div>
-          <h2>✏️ Press Shift to draw annotations</h2>
+    <div className="h-full flex flex-col items-center -my-8">
+      <h1 className="text-3xl ml-4 font-semibold font-mono">Image Annotation</h1>
+      <Card className="m-4 p-4 w-fit space-y-2 items-center justify-center">
+        <input
+          type="file"
+          onChange={handleImageChange}
+          accept="image/*"
+          className="hidden"
+          ref={inputRef}
+        />
+        <div className="w-[40vw] md:!w-[50vw] lg:!w-[60vw] flex gap-8 justify-center">
+          <Button onClick={() => inputRef.current?.click()}>
+            Upload Image
+          </Button>
+          <Button onClick={handleDownload} variant="outline">
+            Download Annotations
+          </Button>
         </div>
-      )}
-
-    </Card>
+        {imageSrc && (
+          <div className="map-container flex flex-col items-center" id="map">
+            <RadioGroup className="flex justify-center gap-3 mb-2 border rounded-xl p-1" defaultValue={selectedShape} onValueChange={setSelectedShape}>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="rect" id="r1" />
+                <label htmlFor="r1">Rectangle</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="polygon" id="r2" />
+                <label htmlFor="r2">Polygon <span className="text-xs text-muted-foreground">(double-click to finish)</span></label>
+              </div>
+            </RadioGroup>
+            <div id="openseadragon-viewer" className="h-[40vh] w-[40vw] md:!w-[50vw] md:!h-[45vh] lg:!h-[50vh] lg:!w-[60vw] xl:!w-[70vh]"></div>
+            <Card className="w-fit space-y-1 mt-2 p-2">
+              <h2>✏️- Use the toolbar above to select a shape. Press 'Shift' to draw.</h2>
+              <h2>⌨️- Press 'F' to Flip the object. 'R' to Rotate.</h2>
+              <h2>🖱️- You can use 'WSAD' or click and drag to move the image.</h2>
+            </Card>
+          </div>
+        )}
+      </Card>
+    </div>
   );
 };
 
