@@ -14,12 +14,14 @@ import { HelpIcon } from "@/components/icons/HelpIcon/HelpIcon"
 import Drawer from "@/components/Drawer/Drawer"
 import ProfilePreviewPanel from "@/components/Profile/SidePanel/ProfilePreviewPanel"
 import { SignUpButton } from "@/features/SignUpButton/SignUpButton"
+import { Braces } from "lucide-react"
 
 const navigation = [
   { name: "Home", href: "/", icon: <HomeIcon /> },
   { name: "Models", href: "/models", icon: <ModelsIcon /> },
   { name: "Datasets", href: "/datasets", icon: <DatasetsIcon /> },
   { name: "Ranking", href: "/rankings", icon: <StarIcon /> },
+  { name: "Data Annotation", href: "/annotate", icon: <Braces className="h-5 w-5" /> },
 ]
 const bottomNavigation = [
   { name: "Settings", href: "/settings", icon: <SettingsIcon /> },
