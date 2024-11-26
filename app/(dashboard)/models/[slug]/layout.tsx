@@ -5,6 +5,9 @@ import { CodeIcon } from "@/components/icons/CodeIcon/CodeIcon"
 import { ModelNavigation } from "@/components/ModelNavigation/ModelNavigation"
 
 export default function ModelLayout({ children }: { children: React.ReactNode }) {
+  const updatedAt = new Date("2024-01-01")
+  const createdAt = new Date("2024-01-01")
+
   return (
     <>
       <div className="px-8">
@@ -12,8 +15,8 @@ export default function ModelLayout({ children }: { children: React.ReactNode })
           <EntryAuthor
             src="/img/small-avatar.png"
             name="John Doe"
-            updatedAt="2024-01-01"
-            createdAt="2024-01-01"
+            updatedAt={updatedAt}
+            createdAt={createdAt}
             likes={10}
           />
           <div className="flex flex-row gap-3">

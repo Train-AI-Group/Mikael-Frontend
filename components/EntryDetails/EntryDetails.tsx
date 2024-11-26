@@ -19,8 +19,7 @@ export const EntryDetails = () => {
       <div className="flex flex-col gap-2">
         <p className="font-inter text-xl font-medium text-black">Tags</p>
         <div className="flex flex-row flex-wrap gap-2">
-          {dataset.tags
-            .filter((tag) =>
+          {dataset?.tags?.filter((tag) =>
               ["Field-Of-Study", "Domain", "Method", "Is-Data-Clean", "Status"].includes(tag.name)
             )
             .map((tag) => (
