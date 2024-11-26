@@ -9,7 +9,7 @@ interface EntryHeadingProps {
 
 export const EntryHeading = ({ title, subTitle, description, imageSrc }: EntryHeadingProps) => {
   return (
-    <div className="flex flex-row items-start justify-between gap-10">
+    <div className="flex flex-row max-lg:flex-col max-lg:gap-4 items-start justify-between gap-10">
       <div className="flex-1">
         <h1 className="mb-6 font-inter text-4xl font-medium text-black">{title}</h1>
         {subTitle && <span className="mb-6 font-inter text-lg text-[#6E6E6E]">{subTitle}</span>}

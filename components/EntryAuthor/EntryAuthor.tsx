@@ -6,8 +6,8 @@ import { HeartIcon } from "@/components/icons/HeartIcon/HeartIcon"
 interface EntryAuthorProps {
   src: string
   name: string
-  updatedAt: string
-  createdAt: string
+  updatedAt: Date
+  createdAt: Date
   likes: number
 }
 
@@ -17,10 +17,10 @@ export const EntryAuthor = ({ src, name, updatedAt, createdAt, likes }: EntryAut
       <AuthorInfo src={src} name={name} />
 
       <div className="w-[2px] h-[2px] rounded-full bg-black" />
-      <span>Updated {getDaysAgo(updatedAt)}</span>
+      <span>Updated {getDaysAgo(updatedAt.toISOString())}</span>
 
       <div className="w-[2px] h-[2px] rounded-full bg-black" />
-      <span>Created on {formatDate(createdAt)}</span>
+      <span>Created on {formatDate(createdAt.toISOString())}</span>
 
       <div className="w-[2px] h-[2px] rounded-full bg-black" />
       <span className="flex items-center gap-1">
