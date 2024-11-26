@@ -17,7 +17,7 @@ export const DashboardNavigation = () => {
       aria-label="Main Navigation"
     >
       <div className="ml-10 mb-12">
-        <Link href="/dashboard">
+        <Link href="/">
           <Image
             src="/img/logo.svg"
             alt="Dashboard Home"
